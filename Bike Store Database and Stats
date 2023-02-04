@@ -1,0 +1,21 @@
+CREATE TABLE STORE (id integer primary key, item_name text, quanity integer, MSRP REAL, Price REAL);
+
+INSERT into STORE VALUES
+(1,"Bike Shorts", 15, 17.99, 19.99),
+(2,"Tee Shirts", 4,15.99, 16),
+(3,"Golf Pants", 3, 12.99, 12.99),
+(4,"Pants", 17, 12.99, 13.00),
+(5,"Tater Rolls", 4, 4.00, 12.00),
+(6,"Belt", 5, 4, 7),
+(7,"Gloves", 14, 5, 7),
+(8,"Lady Pants", 1, 2, 3),
+(9,"Butt Cushion", 5, 6, 6),
+(10,"Bike Shirt", 7, 1.00, 10.00),
+(11,"Pedal Shoes", 8, 14, 14.50),
+(12,"Other thing", 4, 4, 4),
+(13,"Somethin else", 5, 6, 5),
+(14,"Five Frogs", 4, 5, 6),
+(15,"A fish", 6, 7, 19);
+
+SELECT item_name, MSRP
+FROM STORE ORDER BY Price;
