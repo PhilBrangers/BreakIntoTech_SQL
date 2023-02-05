@@ -1368,5 +1368,35 @@ INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft
 
 /*SELECT * FROM players; */
 
-SELECT Position, count(*) FROM players group by Position;
+SELECT 
+    Position, 
+    count(*) 
+    FROM players 
+    group by Position;
+
+SELECT 
+    Player,
+    count(*),
+    CASE
+        WHEN Height_CM > 198 THEN "Tall"
+        WHEN Height_CM > 182 THEN "Average"
+        ELSE "Short"
+    END as Height
+    FROM players
+    group by Height;
+    
+SELECT
+    Position,
+    ROUND(AVG(Height_CM)) as Average_Height
+    FROM players
+    group by Position
+    Having Average_Height > 198;
+
+SELECT *
+    FROM players 
+    WHERE Predraft_Team LIKE 'Kentucky' 
+    AND Conference LIKE 'East';
+    
+
+
 
