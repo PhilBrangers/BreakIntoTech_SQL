@@ -1,0 +1,46 @@
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, star TEXT,spouse TEXT);
+
+INSERT INTO movie_stars VALUES 
+    (1, "Will Smith", "Jada Pickett-Smith"),
+    (2, "Blake Lively", "Ryan Reynolds"),
+    (3, "Jessica Biel", "Justin Timberlake"),
+    (4, "Angelina Jolie", "Brad Pitt"),
+    (5, "Tom Cruise", "Nicole Kidman"),
+    (6, "Ben Affleck", "Jennifer Garner"),
+    (7, "Daniel Craig","Rachel Weisz"),
+    (8, "Kit Harington", "Rose Leslie"),
+    (9, "Michael Fassbender", "Alicia Vikander"),
+    (10, "Annette Bening", "Warren Beatty"),
+    (11, "Miley Cyrus", "Liam Hemsworth"),
+    (12, "Mila Kunis", "Ashton Kutcher"),
+    (13, "Alyson Hannigan", "Alexis Denisof"),
+    (14, "Alexis Bledel", "Vincent Kartheiser"),
+    (15, "David Tennant", "Georgia Moffett");
+
+SELECT * FROM movie_stars; /*Outputing all columns and rows*/
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, star TEXT);
+
+INSERT INTO movies VALUES
+    (1,"Hitch","Will Smith"),
+    (2,"Deadpool", "Ryan Reynolds"),
+    (3,"A Simple Favor","Blake Lively"),
+    (4,"12 Monkey","Brad Pitt"),
+    (5,"Top Gun","Tom Cruise"),
+    (6,"Batman","Ben Affleck"),
+    (7,"Glass Onion","Daniel Craig"),
+    (8,"Shame","Michael Fassbender"),
+    (9, "Eternals","Kit Harington"),
+    (10,"American Beauty","Annette Bening"),
+    (11,"Bolt","Miley Cyrus"),
+    (12,"Black Swan ","Mila Kunis"),
+    (13,"American Pie","Alyson Hannigan"),
+    (14,"Sin City","Alexis Bledel"),
+    (15,"Dr Who","David Tennant");
+
+SELECT * FROM movies; /*Outputing all columns and rows*/
+
+/*Joining Databases to output needed data into 1 sheet*/
+SELECT ms.star as Star, ms.spouse as Spouse, m.name as "Movie Name"     FROM movie_stars ms
+    JOIN movies m
+    ON ms.star = m.star;
