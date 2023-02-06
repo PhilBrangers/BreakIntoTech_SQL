@@ -1,4 +1,8 @@
-CREATE TABLE movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, star TEXT,spouse TEXT);
+CREATE TABLE movie_stars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    star TEXT,
+    spouse TEXT
+    );
 
 INSERT INTO movie_stars VALUES 
     (1, "Will Smith", "Jada Pickett-Smith"),
@@ -19,7 +23,11 @@ INSERT INTO movie_stars VALUES
 
 SELECT * FROM movie_stars; /*Outputing all columns and rows*/
 
-CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, star TEXT);
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT, 
+    star TEXT
+    );
 
 INSERT INTO movies VALUES
     (1,"Hitch","Will Smith"),
@@ -41,6 +49,8 @@ INSERT INTO movies VALUES
 SELECT * FROM movies; /*Outputing all columns and rows*/
 
 /*Joining Databases to output needed data into 1 sheet*/
-SELECT ms.star as Star, ms.spouse as Spouse, m.name as "Movie Name"     FROM movie_stars ms
+SELECT 
+    ms.star as Star, ms.spouse as Spouse, m.name as "Movie Name"     
+    FROM movie_stars ms
     JOIN movies m
     ON ms.star = m.star;
