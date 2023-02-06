@@ -1366,14 +1366,17 @@ INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft
 INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft_Year,Seasons_in_league,Season,Season_short,Predraft_Team,Real_value,Height_CM,Weight_KG,Last_Season) VALUES ('Micheal Ray Richardson','New York Knicks',NULL,'Oct 28, 1979','PG','6''5',189,24,1978,1,'1979-1980',1980,'Montana',1.0,196,85,0);
 INSERT INTO players(Player,Team,Conference,Date,Position,Height,Weight,Age,Draft_Year,Seasons_in_league,Season,Season_short,Predraft_Team,Real_value,Height_CM,Weight_KG,Last_Season) VALUES ('Julius Erving','Philadelphia Sixers',NULL,'Oct 21, 1979','SF','6''6',200,30,1972,7,'1979-1980',1980,'Massachusetts',1.0,198,90,0);
 
-/*SELECT * FROM players; */
+/* Select All */
+SELECT * FROM players; 
 
+/* Number of players in each position*/
 SELECT 
     Position, 
     count(*) 
     FROM players 
     group by Position;
 
+/*Heights of Players Sepereated by categories */
 SELECT 
     Player,
     count(*),
@@ -1384,7 +1387,8 @@ SELECT
     END as Height
     FROM players
     group by Height;
-    
+
+/*Average Heights per Position*/
 SELECT
     Position,
     ROUND(AVG(Height_CM)) as Average_Height
@@ -1392,11 +1396,20 @@ SELECT
     group by Position
     Having Average_Height > 198;
 
+/*Players who went to Kentucky and Ended up in the East Conference*/
 SELECT *
     FROM players 
     WHERE Predraft_Team LIKE 'Kentucky' 
     AND Conference LIKE 'East';
     
-
+/*Average age of players in each position*/
+SELECT Position, AVG(Age) AS Average_Age
+   FROM nfl_players_stats
+   GROUP BY Position;
+    
+/*Players drafted in a particular year and have played in the league for more than X seasons*/
+SELECT Player, Seasons_in_league
+   FROM nfl_players_stats
+   WHERE Draft_Year = 2022 AND Seasons_in_league > 3;
 
 
